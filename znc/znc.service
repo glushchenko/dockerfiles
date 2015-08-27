@@ -1,0 +1,10 @@
+[Unit]
+Description=ZNC bouncer
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker run -d -p 7000:7000 -v /home/fluder/.znc:/znc-data glushchenko:docker-znc
+    
+[Install]
+WantedBy=multi-user.target
