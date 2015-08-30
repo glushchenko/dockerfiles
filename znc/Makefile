@@ -6,4 +6,4 @@ install:
 	mv znc.pem .znc
 	cp znc.service /etc/systemd/system
 	mkdir -p /var/lib/znc
-	cp -R .znc /var/lib/znc
+	cp -R .znc/* /var/lib/znc
