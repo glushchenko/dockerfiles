@@ -1,14 +1,13 @@
 ## ZNC bouncer install
 
-git clone git@github.com:glushchenko/dockerfiles.git  
+### Build dokcer container and install systemd service
 
-### build dokcer container for znc bouncer and install systemd service
-
+git clone git@github.com:glushchenko/dockerfiles.git 
 cd dockerfiles/znc && make build && make install
 
 Edit nickname (root) on /var/lib/znc/config/znc.conf
 
-### enable autoload on boot
+### Enable autoload on boot
 
 sudo systemctl enable znc.service
 
