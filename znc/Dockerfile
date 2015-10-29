@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Oleksandr Glushchenko "contact@fluder.co"
 
 ADD bootstrap.sh /tmp/
-RUN chmod +x /tmp/bootstrap.sh && /tmp/bootstrap.sh
+RUN chmod +x /tmp/bootstrap.sh; sync; /tmp/bootstrap.sh
 
 USER znc
 EXPOSE 7000
