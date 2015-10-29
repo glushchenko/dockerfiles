@@ -7,3 +7,4 @@ install:
 	cp znc.service /etc/systemd/system
 	mkdir -p /var/lib/znc
 	cp -R .znc/* /var/lib/znc
+	chmod -R 777 /var/lib/znc
