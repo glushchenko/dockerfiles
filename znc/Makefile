@@ -3,7 +3,6 @@ MOUNT_FROM = ${HOME}/.znc
 # Auto compile modules dir (znc-build)
 MODULES = $(MOUNT_FROM:=/modules)
 
-
 build:
 	docker build -t ${USER}/znc .
 
