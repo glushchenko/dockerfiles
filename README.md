@@ -2,7 +2,7 @@
 
 git clone git@github.com:glushchenko/dockerfiles.git 
 
-make build
-make init
-make run
+make build  
+make init  
+make run  
 
