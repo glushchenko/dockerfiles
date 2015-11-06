@@ -11,6 +11,7 @@ if [ -d "${DATADIR}/modules" ]; then
   for module in $modules; do
     cd "$(dirname "$module")"
     /usr/local/bin/znc-buildmod "$module"
+    rm "$module"
   done
 
   cd "$cwd"
