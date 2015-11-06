@@ -1,10 +1,22 @@
-build:
-	docker build -t glushchenko:docker-znc .
+MOUNT_FROM = ${HOME}/.znc 
 
-install:
-	openssl req -x509 -newkey rsa:4096 -keyout znc.pem -out znc.pem -days 3650 -nodes
-	mv znc.pem .znc
+# Auto compile modules dir (znc-build)
+MODULES = $(MOUNT_FROM:=/modules)
+
+
+build:
+	docker build -t ${USER}/znc .
+
+init:
+	mkdir -p $(MODULES)
+	wget -P $(MODULES) https://raw.githubusercontent.com/jpnurmi/znc-clientbuffer/master/clientbuffer.cpp
+	openssl req -x509 -newkey rsa:4096 -keyout $(MOUNT_FROM:=/znc.pem) -out $(MOUNT_FROM:=/znc.pem) -days 3650 -nodes
+	docker run -v $(MOUNT_FROM:=:/znc-data) -i -t ${USER}/znc --makeconf
+
+install:	
 	cp znc.service /etc/systemd/system
-	mkdir -p /var/lib/znc
-	cp -R .znc/* /var/lib/znc
-	chmod -R 777 /var/lib/znc
+
+run:
+	docker run -d -p 7000:7000 -v $(MOUNT_FROM):/znc-data ${USER}/znc
+
+.PHONY: build init install run
