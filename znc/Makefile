@@ -12,8 +12,8 @@ init:
 	openssl req -x509 -newkey rsa:4096 -keyout $(MOUNT_FROM:=/znc.pem) -out $(MOUNT_FROM:=/znc.pem) -days 3650 -nodes
 	docker run -v $(MOUNT_FROM:=:/znc-data) -i -t ${USER}/znc --makeconf
 
-install:	
-	cp znc.service /etc/systemd/system
+install-systemd:	
+	sudo cp znc.service /etc/systemd/system
 
 run:
 	docker run -d -p 7000:7000 -v $(MOUNT_FROM):/znc-data ${USER}/znc
