@@ -4,7 +4,7 @@ MOUNT_FROM = /srv/znc
 MODULES = $(MOUNT_FROM:=/modules)
 
 build:
-	sudo mkdir -p /srv/znc
+	sudo mkdir -m 777 -p $(MOUNT_FROM)
 	docker build -t ${USER}/znc .
 
 init:
@@ -14,6 +14,6 @@ init:
 	docker run -v $(MOUNT_FROM:=:/znc-data) -i -t ${USER}/znc --makeconf
 
 run:
-	docker run -d -p 7000:7000 -v $(MOUNT_FROM):/znc-data ${USER}/znc
+	docker run -d -p 7000:7000 -v $(MOUNT_FROM:=:/znc-data) ${USER}/znc
 
 .PHONY: build init install run
