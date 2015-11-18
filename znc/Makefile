@@ -4,7 +4,7 @@ MOUNT_FROM = /srv/znc
 MODULES = $(MOUNT_FROM:=/modules)
 
 build:
-	mkdir -p /srv/znc
+	sudo mkdir -p /srv/znc
 	docker build -t ${USER}/znc .
 
 init:
