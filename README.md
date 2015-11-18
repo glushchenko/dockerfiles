@@ -2,7 +2,5 @@
 
 git clone git@github.com:glushchenko/dockerfiles.git && cd dockerfiles/znc
 
-make build  
-make init  
-make run  
+make build && make run  
 
