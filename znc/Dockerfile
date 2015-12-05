@@ -1,7 +1,7 @@
 FROM debian:jessie
 MAINTAINER Oleksandr Glushchenko "contact@fluder.co"
 
-ENV ZNC_VERSION 1.6.1
+ENV ZNC_VERSION 1.6.2
 
 RUN useradd znc
 
