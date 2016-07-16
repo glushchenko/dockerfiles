@@ -16,6 +16,6 @@ if [ -d "${DATADIR}/modules" ]; then
   cd "$cwd"
 fi
 
-chown -R znc:znc "$DATADIR"
+chown -R fluder:fluder "$DATADIR"
 
 /usr/local/bin/znc -f --datadir="$DATADIR" $@
