@@ -9,11 +9,10 @@ build:
 
 init:
 	mkdir -p $(MODULES)
-	wget -P $(MODULES) https://raw.githubusercontent.com/jpnurmi/znc-clientbuffer/master/clientbuffer.cpp
+	wget -P $(MODULES) https://raw.githubusercontent.com/jpnurmi/znc-playback/master/playback.cpp
 	openssl req -x509 -newkey rsa:4096 -keyout $(MOUNT_FROM:=/znc.pem) -out $(MOUNT_FROM:=/znc.pem) -days 3650 -nodes
-	docker run -v $(MOUNT_FROM:=:/znc-data) -i -t ${USER}/znc --makeconf
 
 run:
-	docker run -d -p 7000:7000 -v $(MOUNT_FROM:=:/znc-data) ${USER}/znc
+	docker run -d -p 7000:7000 -p 113:13373 -v $(MOUNT_FROM:=:/znc-data) ${USER}/znc
 
-.PHONY: build init install run
+.PHONY: build init run
